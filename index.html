@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AF Garimpo Urbano</title>
+<style>
+:root{--g:#0f3d3e;--c:#c46a3d;--b:#eadcc6;--bg:#f7f2e9;--w:#fffdf9;--t:#222;--m:#71695f;--line:#e4d8c8}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--t)}
+a{text-decoration:none;color:inherit}.container{width:min(1160px,92%);margin:auto}
+.top{background:var(--g);color:#fff;text-align:center;padding:10px;font-size:13px;letter-spacing:1px}
+header{position:sticky;top:0;background:#f7f2e9f2;backdrop-filter:blur(8px);border-bottom:1px solid #0001;z-index:5}
+nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:50px;height:50px;border:1px solid var(--c);border-radius:50%;display:grid;place-items:center;font:700 24px Georgia;color:var(--g)}
+.brand strong{display:block;font:700 20px Georgia;color:var(--g);letter-spacing:1px}.brand small{color:var(--c);letter-spacing:2px}
+.links{display:flex;gap:22px;font-weight:700;color:var(--g)}
+.hero{padding:72px 0}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:40px;align-items:center}
+.eyebrow{color:var(--c);font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+h1,h2,h3{font-family:Georgia,serif;color:var(--g)}h1{font-size:clamp(50px,7vw,92px);line-height:.92;margin:16px 0}h1 span{color:var(--c);font-style:italic;font-weight:400}
+.hero p,.story p{color:var(--m);font-size:18px;line-height:1.7}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.btn{padding:14px 20px;border-radius:999px;font-weight:800;border:1px solid var(--g);cursor:pointer}.primary{background:var(--g);color:#fff}.secondary{color:var(--g);background:transparent}
+.hero-card{background:var(--g);color:#fff;border-radius:30px;padding:32px;min-height:420px}.hero-card h2{color:var(--b);font-size:40px;font-weight:400}.hero-card p{color:#dde6e3}
+.points{display:grid;gap:10px;margin-top:28px}.points div{padding:14px;background:#ffffff12;border:1px solid #ffffff18;border-radius:14px}
+section{padding:52px 0}.head{margin-bottom:22px}.head h2{font-size:38px;margin:0}.head p{color:var(--m)}
+.cats,.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.cat,.product{background:var(--w);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.cat{padding:25px;cursor:pointer}.icon{width:50px;height:50px;background:var(--g);color:#fff;border-radius:50%;display:grid;place-items:center;font-size:24px}.cat h3{font-size:24px;margin:14px 0 6px}.cat p,.product p{color:var(--m);line-height:1.5}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;background:var(--w);padding:14px;border:1px solid var(--line);border-radius:16px;margin-bottom:20px}
+.toolbar input,.toolbar select{padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff}.toolbar input{flex:1;min-width:220px}
+.pimg{aspect-ratio:4/3;background:linear-gradient(135deg,var(--b),#f8f2ea);display:grid;place-items:center;font-size:64px;position:relative}.tag{position:absolute;top:12px;left:12px;background:var(--c);color:#fff;padding:7px 10px;border-radius:999px;font-size:11px;font-weight:800}.tag.used{background:var(--g)}
+.pbody{padding:17px}.meta{color:var(--c);font-size:12px;font-weight:800;text-transform:uppercase}.pbody h3{margin:6px 0;font-size:21px}.price{font-size:23px;font-weight:900;color:var(--g);margin:10px 0}
+.pactions{display:grid;grid-template-columns:1fr auto;gap:8px}.small{padding:11px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:800;cursor:pointer}.buy{background:var(--g);color:#fff;border-color:var(--g)}
+.story{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;background:var(--b);padding:36px;border-radius:28px;align-items:center}.mark{min-height:300px;background:var(--g);border-radius:22px;color:var(--b);display:grid;place-items:center;text-align:center}.mark .af{font:700 82px Georgia}.mark strong{letter-spacing:4px}.quote{color:var(--c);font:italic 23px Georgia}
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);background:var(--g);border-radius:22px;overflow:hidden}.benefit{padding:24px;color:#fff;border-right:1px solid #ffffff22}.benefit strong{display:block;color:var(--b);margin-top:8px}.benefit small{color:#dce2df}
+footer{padding:30px 0 44px;color:var(--m)}.footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.modal.open{display:flex}.box{background:var(--w);border-radius:22px;padding:24px;width:min(500px,100%)}.box h3{font-size:28px;margin-top:0}
+@media(max-width:850px){.links{display:none}.hero-grid,.story{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,1fr)}.benefits{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.cats,.products,.benefits{grid-template-columns:1fr}.brand strong{font-size:16px}.pactions{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="top">ACHADOS • PREÇOS ESPECIAIS • NOVOS DESTINOS</div>
+<header><div class="container"><nav>
+<a class="brand" href="#"><div class="logo">AF</div><div><strong>AF GARIMPO URBANO</strong><small>Boas coisas. Novos destinos.</small></div></a>
+<div class="links"><a href="#produtos">Produtos</a><a href="#categorias">Categorias</a><a href="#historia">Nossa história</a></div>
+</nav></div></header>
+
+<main>
+<section class="hero"><div class="container hero-grid">
+<div><div class="eyebrow">Angela + Felipe</div><h1>Achados que <span>valem a pena.</span></h1>
+<p>Produtos novos e seminovos com preços especiais. Tênis, eletrônicos, eletrodomésticos e outros bons achados escolhidos para ganhar um novo destino.</p>
+<div class="actions"><a href="#produtos" class="btn primary">Ver produtos</a><a href="#historia" class="btn secondary">Conheça o AF</a></div></div>
+<div class="hero-card"><div style="font-size:30px;color:var(--c)">◇</div><h2>Boas coisas.<br>Novos destinos.</h2><p>Uma vitrine de oportunidades com atendimento direto, informações claras e preços que fazem sentido.</p>
+<div class="points"><div>◆ Produtos novos e seminovos</div><div>◆ Preços especiais de verdade</div><div>◆ Atendimento direto pelo WhatsApp</div></div></div>
+</div></section>
+
+<section id="categorias"><div class="container"><div class="head"><h2>Garimpe por categoria</h2><p>Escolha onde quer começar sua busca.</p></div>
+<div class="cats">
+<div class="cat" onclick="setCat('Tênis')"><div class="icon">👟</div><h3>Tênis</h3><p>Modelos novos e seminovos em boas oportunidades.</p></div>
+<div class="cat" onclick="setCat('Eletrônicos')"><div class="icon">🎧</div><h3>Eletrônicos</h3><p>Tecnologia, acessórios e equipamentos.</p></div>
+<div class="cat" onclick="setCat('Eletrodomésticos')"><div class="icon">🏠</div><h3>Eletrodomésticos</h3><p>Itens úteis para casa com preços especiais.</p></div>
+</div></div></section>
+
+<section id="produtos"><div class="container"><div class="head"><h2>Achados disponíveis</h2><p>Exemplos iniciais — depois você substitui pelos produtos reais.</p></div>
+<div class="toolbar"><input id="search" placeholder="Buscar produto..." oninput="render()"><select id="cat" onchange="render()"><option value="">Todas as categorias</option><option>Tênis</option><option>Eletrônicos</option><option>Eletrodomésticos</option></select><select id="cond" onchange="render()"><option value="">Novo e seminovo</option><option>Novo</option><option>Seminovo</option></select></div>
+<div class="products" id="grid"></div></div></section>
+
+<section id="historia"><div class="container"><div class="story">
+<div class="mark"><div><div class="af">AF</div><div style="font-size:28px;color:var(--c)">◇</div><strong>GARIMPO</strong><div style="letter-spacing:3px;margin-top:7px">URBANO</div></div></div>
+<div><h2>Angela + Felipe = AF</h2><p>O AF Garimpo Urbano nasceu de uma fase de mudança e renovação. Reunimos produtos novos e seminovos que estão ganhando um novo destino, muitos deles com preços especiais.</p><p>A ideia é apresentar bons produtos de forma organizada, transparente e acessível, para que cada achado encontre alguém que realmente vá aproveitar.</p><div class="quote">“Boas coisas. Novos destinos.”</div></div>
+</div></div></section>
+
+<section><div class="container"><div class="benefits">
+<div class="benefit">◇<strong>ACHADOS</strong><small>Produtos que surpreendem.</small></div>
+<div class="benefit">🏷<strong>PREÇOS</strong><small>Oportunidades que cabem no bolso.</small></div>
+<div class="benefit">♡<strong>CONFIANÇA</strong><small>Atendimento direto e humano.</small></div>
+<div class="benefit">➤<strong>NOVOS DESTINOS</strong><small>Boas coisas seguindo novas histórias.</small></div>
+</div></div></section>
+</main>
+
+<footer><div class="container footer"><strong style="color:var(--g)">AF Garimpo Urbano</strong><span>© 2026 • Boas coisas. Novos destinos.</span></div></footer>
+
+<div class="modal" id="modal"><div class="box"><h3 id="mt"></h3><p id="md"></p><div class="price" id="mp"></div><button class="btn primary" style="width:100%" id="wa">Tenho interesse pelo WhatsApp</button><button class="btn secondary" style="width:100%;margin-top:8px" onclick="closeModal()">Fechar</button></div></div>
+
+<script>
+const whatsappNumber="5511999999999";
+const products=[
+{id:1,name:"Tênis esportivo",category:"Tênis",condition:"Seminovo",price:250,emoji:"👟",desc:"Pouco uso e bem conservado."},
+{id:2,name:"TV Stick",category:"Eletrônicos",condition:"Seminovo",price:180,emoji:"📺",desc:"Compacto e funcional."},
+{id:3,name:"Fone Bluetooth",category:"Eletrônicos",condition:"Novo",price:120,emoji:"🎧",desc:"Produto novo e pronto para uso."},
+{id:4,name:"Liquidificador",category:"Eletrodomésticos",condition:"Seminovo",price:90,emoji:"🥤",desc:"Funcionando perfeitamente."},
+{id:5,name:"Tênis casual",category:"Tênis",condition:"Novo",price:199,emoji:"👟",desc:"Novo, sem uso."},
+{id:6,name:"Cafeteira",category:"Eletrodomésticos",condition:"Seminovo",price:140,emoji:"☕",desc:"Bom estado de conservação."}
+];
+const money=v=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(v);
+function render(){let q=document.getElementById('search').value.toLowerCase(),c=document.getElementById('cat').value,d=document.getElementById('cond').value;
+let f=products.filter(p=>(!q||(p.name+" "+p.desc+" "+p.category).toLowerCase().includes(q))&&(!c||p.category===c)&&(!d||p.condition===d));
+document.getElementById('grid').innerHTML=f.map(p=>`<article class="product"><div class="pimg"><span class="tag ${p.condition==='Seminovo'?'used':''}">${p.condition}</span>${p.emoji}</div><div class="pbody"><div class="meta">${p.category}</div><h3>${p.name}</h3><p>${p.desc}</p><div class="price">${money(p.price)}</div><div class="pactions"><button class="small buy" onclick="openProduct(${p.id})">Tenho interesse</button><button class="small" onclick="navigator.clipboard.writeText(location.href)">Compartilhar</button></div></div></article>`).join('');}
+function setCat(c){document.getElementById('cat').value=c;render();document.getElementById('produtos').scrollIntoView({behavior:'smooth'});}
+function openProduct(id){let p=products.find(x=>x.id===id);mt.textContent=p.name;md.textContent=p.condition+" • "+p.category+". "+p.desc;mp.textContent=money(p.price);wa.onclick=()=>window.open("https://wa.me/"+whatsappNumber+"?text="+encodeURIComponent('Olá! Vi o produto "'+p.name+'" no site AF Garimpo Urbano e gostaria de saber se ainda está disponível.'),'_blank');modal.classList.add('open');}
+function closeModal(){modal.classList.remove('open')}render();
+</script>
+</body></html>
