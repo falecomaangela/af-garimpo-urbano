@@ -1,13 +1,15 @@
-AF Garimpo Urbano - identidade Proposta 1
+AF GARIMPO URBANO - 4 PRODUTOS REAIS
 
-Edite o WhatsApp em index.html procurando:
+Incluídos:
+1. Nike Casual Verde - Tam. 40/41 - R$ 140 - Novo
+2. Nike Push Ref. 007 Branco - Tam. 35 - R$ 90 - Novo
+3. Nike SB Ref. 006C Rosa - Tam. 39 - R$ 120 - Novo
+4. Nike CBF Edição Limitada - Tam. 43 - R$ 150 - Novo
+
+Para publicar no GitHub, envie:
+- index.html
+- a pasta fotos inteira
+
+O WhatsApp ainda está com número de exemplo. Procure no index.html:
 const whatsappNumber="5511999999999";
-
-Edite os produtos procurando:
-const products=[
-
-Identidade:
-Verde profundo #0F3D3E
-Cobre #C46A3D
-Bege #EADCC6
-Off-white #F7F2E9
+e substitua pelo número real com 55 + DDD + número.

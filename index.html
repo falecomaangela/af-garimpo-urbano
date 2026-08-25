@@ -26,13 +26,13 @@ section{padding:52px 0}.head{margin-bottom:22px}.head h2{font-size:38px;margin:0
 .cat{padding:25px;cursor:pointer}.icon{width:50px;height:50px;background:var(--g);color:#fff;border-radius:50%;display:grid;place-items:center;font-size:24px}.cat h3{font-size:24px;margin:14px 0 6px}.cat p,.product p{color:var(--m);line-height:1.5}
 .toolbar{display:flex;gap:10px;flex-wrap:wrap;background:var(--w);padding:14px;border:1px solid var(--line);border-radius:16px;margin-bottom:20px}
 .toolbar input,.toolbar select{padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff}.toolbar input{flex:1;min-width:220px}
-.pimg{aspect-ratio:4/3;background:linear-gradient(135deg,var(--b),#f8f2ea);display:grid;place-items:center;font-size:64px;position:relative}.tag{position:absolute;top:12px;left:12px;background:var(--c);color:#fff;padding:7px 10px;border-radius:999px;font-size:11px;font-weight:800}.tag.used{background:var(--g)}
+.pimg{aspect-ratio:4/3;background:#eee;position:relative;overflow:hidden}.pimg img{width:100%;height:100%;object-fit:cover;display:block}.tag{position:absolute;top:12px;left:12px;background:var(--c);color:#fff;padding:7px 10px;border-radius:999px;font-size:11px;font-weight:800;z-index:2}.limited{position:absolute;top:12px;right:12px;background:var(--g);color:#fff;padding:7px 10px;border-radius:999px;font-size:11px;font-weight:800;z-index:2}
 .pbody{padding:17px}.meta{color:var(--c);font-size:12px;font-weight:800;text-transform:uppercase}.pbody h3{margin:6px 0;font-size:21px}.price{font-size:23px;font-weight:900;color:var(--g);margin:10px 0}
-.pactions{display:grid;grid-template-columns:1fr auto;gap:8px}.small{padding:11px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:800;cursor:pointer}.buy{background:var(--g);color:#fff;border-color:var(--g)}
+.details{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}.pill{background:var(--bg);border:1px solid var(--line);padding:7px 10px;border-radius:999px;font-size:12px;font-weight:700;color:var(--g)}.pactions{display:grid;grid-template-columns:1fr auto;gap:8px}.small{padding:11px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:800;cursor:pointer}.buy{background:var(--g);color:#fff;border-color:var(--g)}
 .story{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;background:var(--b);padding:36px;border-radius:28px;align-items:center}.mark{min-height:300px;background:var(--g);border-radius:22px;color:var(--b);display:grid;place-items:center;text-align:center}.mark .af{font:700 82px Georgia}.mark strong{letter-spacing:4px}.quote{color:var(--c);font:italic 23px Georgia}
 .benefits{display:grid;grid-template-columns:repeat(4,1fr);background:var(--g);border-radius:22px;overflow:hidden}.benefit{padding:24px;color:#fff;border-right:1px solid #ffffff22}.benefit strong{display:block;color:var(--b);margin-top:8px}.benefit small{color:#dce2df}
 footer{padding:30px 0 44px;color:var(--m)}.footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.modal.open{display:flex}.box{background:var(--w);border-radius:22px;padding:24px;width:min(500px,100%)}.box h3{font-size:28px;margin-top:0}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.modal.open{display:flex}.box{background:var(--w);border-radius:22px;padding:24px;width:min(560px,100%)}.box h3{font-size:28px;margin-top:0}.gallery{display:flex;gap:8px;overflow:auto;margin:12px 0}.gallery img{width:120px;height:90px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
 @media(max-width:850px){.links{display:none}.hero-grid,.story{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,1fr)}.benefits{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.cats,.products,.benefits{grid-template-columns:1fr}.brand strong{font-size:16px}.pactions{grid-template-columns:1fr}}
 </style>
@@ -79,24 +79,23 @@ footer{padding:30px 0 44px;color:var(--m)}.footer{display:flex;justify-content:s
 
 <footer><div class="container footer"><strong style="color:var(--g)">AF Garimpo Urbano</strong><span>© 2026 • Boas coisas. Novos destinos.</span></div></footer>
 
-<div class="modal" id="modal"><div class="box"><h3 id="mt"></h3><p id="md"></p><div class="price" id="mp"></div><button class="btn primary" style="width:100%" id="wa">Tenho interesse pelo WhatsApp</button><button class="btn secondary" style="width:100%;margin-top:8px" onclick="closeModal()">Fechar</button></div></div>
+<div class="modal" id="modal"><div class="box"><h3 id="mt"></h3><div class="gallery" id="gallery"></div><p id="md"></p><div class="price" id="mp"></div><button class="btn primary" style="width:100%" id="wa">Tenho interesse pelo WhatsApp</button><button class="btn secondary" style="width:100%;margin-top:8px" onclick="closeModal()">Fechar</button></div></div>
 
 <script>
 const whatsappNumber="5511999999999";
 const products=[
-{id:1,name:"Tênis esportivo",category:"Tênis",condition:"Seminovo",price:250,emoji:"👟",desc:"Pouco uso e bem conservado."},
-{id:2,name:"TV Stick",category:"Eletrônicos",condition:"Seminovo",price:180,emoji:"📺",desc:"Compacto e funcional."},
-{id:3,name:"Fone Bluetooth",category:"Eletrônicos",condition:"Novo",price:120,emoji:"🎧",desc:"Produto novo e pronto para uso."},
-{id:4,name:"Liquidificador",category:"Eletrodomésticos",condition:"Seminovo",price:90,emoji:"🥤",desc:"Funcionando perfeitamente."},
-{id:5,name:"Tênis casual",category:"Tênis",condition:"Novo",price:199,emoji:"👟",desc:"Novo, sem uso."},
-{id:6,name:"Cafeteira",category:"Eletrodomésticos",condition:"Seminovo",price:140,emoji:"☕",desc:"Bom estado de conservação."}
+{id:1,name:"Nike Casual Verde",category:"Tênis",condition:"Novo",size:"40/41",price:140,desc:"Tênis Nike novo, em branco e tons de verde. Modelo casual/esportivo, versátil para o dia a dia.",image:"fotos/nike-verde-2.jpg",images:["fotos/nike-verde-2.jpg","fotos/nike-verde-1.jpg"]},
+{id:2,name:"Nike Push – Ref. 007 Branco",category:"Tênis",condition:"Novo",size:"35",price:90,desc:"Nike Push Ref. 007 Branco, novo. Visual esportivo em branco com detalhes em verde, preto e laranja.",image:"fotos/nike-push-3.jpg",images:["fotos/nike-push-3.jpg","fotos/nike-push-1.jpg","fotos/nike-push-2.jpg","fotos/nike-push-4.jpg"]},
+{id:3,name:"Nike SB – Ref. 006C Rosa",category:"Tênis",condition:"Novo",size:"39",price:120,desc:"Nike SB Ref. 006C Rosa, novo. Combinação de tons de rosa com detalhe contrastante no logo.",image:"fotos/nike-sb-rosa.jpg",images:["fotos/nike-sb-rosa.jpg"]},
+{id:4,name:"Nike CBF – Edição Limitada",category:"Tênis",condition:"Novo",size:"43",price:150,limited:true,desc:"Edição limitada com design especial inspirado na CBF, em azul com detalhes em verde e roxo.",image:"fotos/nike-cbf.jpg",images:["fotos/nike-cbf.jpg"]}
 ];
 const money=v=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(v);
 function render(){let q=document.getElementById('search').value.toLowerCase(),c=document.getElementById('cat').value,d=document.getElementById('cond').value;
-let f=products.filter(p=>(!q||(p.name+" "+p.desc+" "+p.category).toLowerCase().includes(q))&&(!c||p.category===c)&&(!d||p.condition===d));
-document.getElementById('grid').innerHTML=f.map(p=>`<article class="product"><div class="pimg"><span class="tag ${p.condition==='Seminovo'?'used':''}">${p.condition}</span>${p.emoji}</div><div class="pbody"><div class="meta">${p.category}</div><h3>${p.name}</h3><p>${p.desc}</p><div class="price">${money(p.price)}</div><div class="pactions"><button class="small buy" onclick="openProduct(${p.id})">Tenho interesse</button><button class="small" onclick="navigator.clipboard.writeText(location.href)">Compartilhar</button></div></div></article>`).join('');}
+let f=products.filter(p=>(!q||(p.name+" "+p.desc+" "+p.category+" "+p.size).toLowerCase().includes(q))&&(!c||p.category===c)&&(!d||p.condition===d));
+document.getElementById('grid').innerHTML=f.length?f.map(p=>`<article class="product"><div class="pimg"><span class="tag">${p.condition}</span>${p.limited?'<span class="limited">EDIÇÃO LIMITADA</span>':''}<img src="${p.image}" alt="${p.name}"></div><div class="pbody"><div class="meta">${p.category}</div><h3>${p.name}</h3><div class="details"><span class="pill">Tamanho ${p.size}</span><span class="pill">${p.condition}</span></div><p>${p.desc}</p><div class="price">${money(p.price)}</div><div class="pactions"><button class="small buy" onclick="openProduct(${p.id})">Tenho interesse</button><button class="small" onclick="shareProduct(${p.id})">Compartilhar</button></div></div></article>`).join(''):'<p>Nenhum produto encontrado.</p>';}
 function setCat(c){document.getElementById('cat').value=c;render();document.getElementById('produtos').scrollIntoView({behavior:'smooth'});}
-function openProduct(id){let p=products.find(x=>x.id===id);mt.textContent=p.name;md.textContent=p.condition+" • "+p.category+". "+p.desc;mp.textContent=money(p.price);wa.onclick=()=>window.open("https://wa.me/"+whatsappNumber+"?text="+encodeURIComponent('Olá! Vi o produto "'+p.name+'" no site AF Garimpo Urbano e gostaria de saber se ainda está disponível.'),'_blank');modal.classList.add('open');}
-function closeModal(){modal.classList.remove('open')}render();
+function openProduct(id){let p=products.find(x=>x.id===id);mt.textContent=p.name;md.textContent=p.condition+" • Tamanho "+p.size+". "+p.desc;mp.textContent=money(p.price);gallery.innerHTML=p.images.map(img=>`<img src="${img}" alt="${p.name}">`).join('');wa.onclick=()=>window.open("https://wa.me/"+whatsappNumber+"?text="+encodeURIComponent('Olá! Vi o produto "'+p.name+'" no site AF Garimpo Urbano e gostaria de saber se ainda está disponível.'),'_blank');modal.classList.add('open');}
+function closeModal(){modal.classList.remove('open')}
+function shareProduct(id){let p=products.find(x=>x.id===id);let txt=p.name+" - "+money(p.price)+" | AF Garimpo Urbano";if(navigator.share){navigator.share({title:p.name,text:txt,url:location.href}).catch(()=>{})}else{navigator.clipboard.writeText(txt+" "+location.href);alert("Link copiado!")}}render();
 </script>
 </body></html>
