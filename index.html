@@ -77,12 +77,13 @@ footer{padding:30px 0 44px;color:var(--m)}.footer{display:flex;justify-content:s
 </div></div></section>
 </main>
 
-<footer><div class="container footer"><strong style="color:var(--g)">AF Garimpo Urbano</strong><span>© 2026 • Boas coisas. Novos destinos.</span></div></footer>
+<footer><div class="container footer"><div><strong style="color:var(--g)">AF Garimpo Urbano</strong><div style="margin-top:8px;line-height:1.7"><strong>Atendimento:</strong><br>Angela • WhatsApp (11) 94541-6598<br>Felipe • WhatsApp (11) 95399-9395</div></div><span>© 2026 • Boas coisas. Novos destinos.</span></div></footer>
 
-<div class="modal" id="modal"><div class="box"><h3 id="mt"></h3><div class="gallery" id="gallery"></div><p id="md"></p><div class="price" id="mp"></div><button class="btn primary" style="width:100%" id="wa">Tenho interesse pelo WhatsApp</button><button class="btn secondary" style="width:100%;margin-top:8px" onclick="closeModal()">Fechar</button></div></div>
+<div class="modal" id="modal"><div class="box"><h3 id="mt"></h3><div class="gallery" id="gallery"></div><p id="md"></p><div class="price" id="mp"></div><p style="font-weight:800;color:var(--g);margin-bottom:10px">Escolha com quem deseja falar:</p><button class="btn primary" style="width:100%" id="waAngela">💬 Falar com Angela</button><button class="btn primary" style="width:100%;margin-top:8px" id="waFelipe">💬 Falar com Felipe</button><button class="btn secondary" style="width:100%;margin-top:8px" onclick="closeModal()">Fechar</button></div></div>
 
 <script>
-const whatsappNumber="5511999999999";
+const whatsappAngela="5511945416598";
+const whatsappFelipe="5511953999395";
 const products=[
 {id:1,name:"Nike Casual Verde",category:"Tênis",condition:"Novo",size:"40/41",price:140,desc:"Tênis Nike novo, em branco e tons de verde. Modelo casual/esportivo, versátil para o dia a dia.",image:"fotos/nike-verde-2.jpg",images:["fotos/nike-verde-2.jpg","fotos/nike-verde-1.jpg"]},
 {id:2,name:"Nike Push – Ref. 007 Branco",category:"Tênis",condition:"Novo",size:"35",price:90,desc:"Nike Push Ref. 007 Branco, novo. Visual esportivo em branco com detalhes em verde, preto e laranja.",image:"fotos/nike-push-3.jpg",images:["fotos/nike-push-3.jpg","fotos/nike-push-1.jpg","fotos/nike-push-2.jpg","fotos/nike-push-4.jpg"]},
@@ -94,7 +95,9 @@ function render(){let q=document.getElementById('search').value.toLowerCase(),c=
 let f=products.filter(p=>(!q||(p.name+" "+p.desc+" "+p.category+" "+p.size).toLowerCase().includes(q))&&(!c||p.category===c)&&(!d||p.condition===d));
 document.getElementById('grid').innerHTML=f.length?f.map(p=>`<article class="product"><div class="pimg"><span class="tag">${p.condition}</span>${p.limited?'<span class="limited">EDIÇÃO LIMITADA</span>':''}<img src="${p.image}" alt="${p.name}"></div><div class="pbody"><div class="meta">${p.category}</div><h3>${p.name}</h3><div class="details"><span class="pill">Tamanho ${p.size}</span><span class="pill">${p.condition}</span></div><p>${p.desc}</p><div class="price">${money(p.price)}</div><div class="pactions"><button class="small buy" onclick="openProduct(${p.id})">Tenho interesse</button><button class="small" onclick="shareProduct(${p.id})">Compartilhar</button></div></div></article>`).join(''):'<p>Nenhum produto encontrado.</p>';}
 function setCat(c){document.getElementById('cat').value=c;render();document.getElementById('produtos').scrollIntoView({behavior:'smooth'});}
-function openProduct(id){let p=products.find(x=>x.id===id);mt.textContent=p.name;md.textContent=p.condition+" • Tamanho "+p.size+". "+p.desc;mp.textContent=money(p.price);gallery.innerHTML=p.images.map(img=>`<img src="${img}" alt="${p.name}">`).join('');wa.onclick=()=>window.open("https://wa.me/"+whatsappNumber+"?text="+encodeURIComponent('Olá! Vi o produto "'+p.name+'" no site AF Garimpo Urbano e gostaria de saber se ainda está disponível.'),'_blank');modal.classList.add('open');}
+function openProduct(id){let p=products.find(x=>x.id===id);mt.textContent=p.name;md.textContent=p.condition+" • Tamanho "+p.size+". "+p.desc;mp.textContent=money(p.price);gallery.innerHTML=p.images.map(img=>`<img src="${img}" alt="${p.name}">`).join('');const msg=encodeURIComponent('Olá! Vi o produto \"'+p.name+'\" por '+money(p.price)+' no site AF Garimpo Urbano e gostaria de saber se ainda está disponível.');
+waAngela.onclick=()=>window.open('https://wa.me/'+whatsappAngela+'?text='+msg,'_blank');
+waFelipe.onclick=()=>window.open('https://wa.me/'+whatsappFelipe+'?text='+msg,'_blank');modal.classList.add('open');}
 function closeModal(){modal.classList.remove('open')}
 function shareProduct(id){let p=products.find(x=>x.id===id);let txt=p.name+" - "+money(p.price)+" | AF Garimpo Urbano";if(navigator.share){navigator.share({title:p.name,text:txt,url:location.href}).catch(()=>{})}else{navigator.clipboard.writeText(txt+" "+location.href);alert("Link copiado!")}}render();
 </script>
