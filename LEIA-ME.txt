@@ -13,3 +13,6 @@ Para publicar no GitHub, envie:
 O WhatsApp ainda está com número de exemplo. Procure no index.html:
 const whatsappNumber="5511999999999";
 e substitua pelo número real com 55 + DDD + número.
+
+
+Atualização 27/08/2026: novos produtos e tênis adicionados. Todos os tênis desta atualização foram cadastrados como NOVOS.
