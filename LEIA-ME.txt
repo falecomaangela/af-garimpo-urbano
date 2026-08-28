@@ -16,3 +16,9 @@ e substitua pelo número real com 55 + DDD + número.
 
 
 Atualização 27/08/2026: novos produtos e tênis adicionados. Todos os tênis desta atualização foram cadastrados como NOVOS.
+
+
+ATUALIZAÇÃO - LOTE 2
+15 produtos adicionados (TV Sony até Dignics 05).
+Total do site: 64 produtos.
+As capas de produtos enviados apenas em vídeo foram extraídas dos próprios vídeos para manter o site leve e compatível com GitHub Pages.
